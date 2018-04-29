@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -75,34 +76,19 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mUserName = (EditText) findViewById(R.id.txtUserName);
-
         mPasswordView = (EditText) findViewById(R.id.textPassword);
-
-
-
-
 
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences preferences = getSharedPreferences("prefs",MODE_PRIVATE);
-                String userUsername = preferences.getString("username","");
-                String userPassword = preferences.getString("password","");
 
                 String UserName = mUserName.getText().toString();
                 String Pwd = mPasswordView.getText().toString();
+                String type = "login";
 
-
-                if (UserName.equalsIgnoreCase(userUsername) && Pwd.equals(userPassword)){
-                    Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(MainIntent);
-                    Toast.makeText(LoginActivity.this, "You are Sign in Successfuly", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Sorry, UserName or Password is incorrect", Toast.LENGTH_LONG).show();
-
-                }
+                DatabaseController databaseController = new DatabaseController(LoginActivity.this);
+                databaseController.execute(type, mUserName.getText().toString(), mPasswordView.getText().toString());
 
             }
         });
@@ -121,6 +107,7 @@ public class LoginActivity extends AppCompatActivity{
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
+
 
 
 }

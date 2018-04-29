@@ -9,6 +9,8 @@ import android.widget.Chronometer;
 
 public class SleepActivity extends AppCompatActivity {
 
+    private MainActivity mainActivity;
+
     private Button mStartButton;
     private Button mPauseButton;
     private Button mResetButton;
@@ -16,6 +18,10 @@ public class SleepActivity extends AppCompatActivity {
     private Chronometer mChronometer;
 
     private long lastPasue;
+
+    public void SetMain (MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +75,6 @@ public class SleepActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mChronometer.stop();
                 mPauseButton.setEnabled(false);
-
 
             }
         });
