@@ -4,7 +4,11 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.jacob.sleepapplication"
+<<<<<<< HEAD
         minSdkVersion 21
+=======
+        minSdkVersion 24
+>>>>>>> df3eb66e438e934bb5874deb29606446f7139c35
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
