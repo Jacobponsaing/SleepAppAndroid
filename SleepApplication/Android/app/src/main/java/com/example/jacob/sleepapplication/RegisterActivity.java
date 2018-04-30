@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText editName = (EditText) findViewById(R.id.editName);
         final EditText editUsername = (EditText) findViewById(R.id.editUserName);
         final EditText editPassword = (EditText) findViewById(R.id.editPassword);
-        final TextView txtHeight = (TextView) findViewById(R.id.editHeight);
+        final TextView txtHeight = (TextView) findViewById(R.id.txtHeight);
         final SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
 
         final Button bRegister = (Button) findViewById(R.id.bRegister);
@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean fromUser) {
                 String seekbarValue = String.valueOf(i);
-                txtHeight.setText(seekbarValue);
+                txtHeight.setText("Height: " + seekbarValue);
             }
 
             @Override
