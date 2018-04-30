@@ -29,10 +29,11 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         String type = params[0];
         String login_url = "http://212.10.146.182:8080/login.php";
+        String register_url = "http://212.10.146.182:8080/register.php";
         if(type.equals("login")) {
             try {
                 String user_name = params[1];
-                String password = params[2];
+                String user_pass = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -41,7 +42,7 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
+                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(user_pass,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -62,6 +63,56 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+        } else if(type.equals("register")) {
+            try {
+                String user_id = params[1];
+                String user_name = params[2];
+                String user_pass = params[3];
+                String school_type = params[4];
+                String gender = params[5];
+                String birth_year = params[6];
+                String height = params[7];
+                String weight = params[8];
+                String sleep_disorder = params[9];
+                URL url = new URL(register_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data =
+                                        URLEncoder.encode("user_id","UTF-8")+ "="+URLEncoder.encode(user_id,"UTF-8")+"&"+
+                                        URLEncoder.encode("user_name","UTF-8")+ "="+URLEncoder.encode(user_name,"UTF-8")+"&"+
+                                        URLEncoder.encode("user_pass","UTF-8")+ "="+URLEncoder.encode(user_pass,"UTF-8")+"&"+
+                                        URLEncoder.encode("school_type","UTF-8")+ "="+URLEncoder.encode(school_type,"UTF-8")+"&"+
+                                        URLEncoder.encode("gender","UTF-8")+ "="+URLEncoder.encode(gender,"UTF-8")+"&"+
+                                        URLEncoder.encode("birth_year","UTF-8")+ "="+URLEncoder.encode(birth_year,"UTF-8")+"&"+
+                                        URLEncoder.encode("height","UTF-8")+ "="+URLEncoder.encode(height,"UTF-8")+"&"+
+                                        URLEncoder.encode("weight","UTF-8")+ "="+URLEncoder.encode(weight,"UTF-8")+"&"+
+                                        URLEncoder.encode("sleep_disorder","UTF-8")+ "="+URLEncoder.encode(sleep_disorder,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while((line = bufferedReader.readLine())!= null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
         return null;
     }
@@ -77,8 +128,12 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
         alertDialog.setMessage(result);
         alertDialog.show();
         if (result.equalsIgnoreCase("login success")) {
-            Intent MainIntent = new Intent(context, MainActivity.class);
-            context.startActivity(MainIntent);
+            Intent Intent = new Intent(context, MainActivity.class);
+            context.startActivity(Intent);
+        }
+        if (result.equalsIgnoreCase("Insert successful")) {
+            Intent Intent = new Intent(context, LoginActivity.class);
+            context.startActivity(Intent);
         }
 
     }
