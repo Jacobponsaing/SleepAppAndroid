@@ -28,7 +28,7 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://192.168.87.102/login.php";
+        String login_url = "http://212.10.146.182:8080/login.php";
         if(type.equals("login")) {
             try {
                 String user_name = params[1];
