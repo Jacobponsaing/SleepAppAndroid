@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -20,6 +22,8 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText editName = (EditText) findViewById(R.id.editName);
         final EditText editUsername = (EditText) findViewById(R.id.editUserName);
         final EditText editPassword = (EditText) findViewById(R.id.editPassword);
+        final TextView txtHeight = (TextView) findViewById(R.id.editHeight);
+        final SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
 
         final Button bRegister = (Button) findViewById(R.id.bRegister);
 
@@ -43,6 +47,23 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);
 
+
+            }
+        });
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean fromUser) {
+                String seekbarValue = String.valueOf(i);
+                txtHeight.setText(seekbarValue);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });

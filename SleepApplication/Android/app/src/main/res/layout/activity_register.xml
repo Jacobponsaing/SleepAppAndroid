@@ -60,7 +60,7 @@
         tools:layout_editor_absoluteY="148dp" />
 
     <EditText
-        android:id="@+id/editWeight"
+        android:id="@+id/txtWeight"
         android:layout_width="386dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -73,7 +73,7 @@
         tools:layout_editor_absoluteY="175dp" />
 
     <EditText
-        android:id="@+id/editHeight"
+        android:id="@+id/txtHeight"
         android:layout_width="386dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -91,10 +91,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="165dp"
+        android:layout_marginBottom="14dp"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="196dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>
