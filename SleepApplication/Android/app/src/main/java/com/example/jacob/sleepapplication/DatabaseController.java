@@ -121,7 +121,6 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
             Intent Intent = new Intent(context, LoginActivity.class);
             context.startActivity(Intent);
         }
-
     }
 
     @Override
