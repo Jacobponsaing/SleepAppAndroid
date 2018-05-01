@@ -90,10 +90,8 @@ public class SleepActivity extends AppCompatActivity {
                 awoke_date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
                 awoke_time = new java.sql.Time(Calendar.getInstance().getTime().getTime());
 
-                SimpleDateFormat sdfDate = new SimpleDateFormat("yyyymmdd");
-                SimpleDateFormat sdfTime = new SimpleDateFormat("hhmmss");
-
-                String user_id = "1";
+                SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
+                SimpleDateFormat sdfTime = new SimpleDateFormat("HHmmss");
 
                 String sleep_dateTime = sdfDate.format(sleep_date)+sdfTime.format(sleep_time);
                 String awoke_dateTime = sdfDate.format(awoke_date)+sdfTime.format(awoke_time);
