@@ -7,7 +7,7 @@
     tools:context=".SleepActivity">
 
     <Button
-        android:id="@+id/accept"
+        android:id="@+id/btnaccept"
         android:layout_width="110dp"
         android:layout_height="58dp"
         android:layout_alignParentBottom="true"
@@ -17,12 +17,13 @@
         android:text="Accepter" />
 
     <Button
-        android:id="@+id/reject"
+        android:id="@+id/btnreject"
         android:layout_width="100dp"
-        android:layout_height="59dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/accept"
-        android:layout_marginEnd="58dp"
+        android:layout_height="58dp"
+        android:layout_alignEnd="@+id/betingelser"
+        android:layout_alignTop="@+id/btnaccept"
+        android:layout_marginBottom="92dp"
+        android:layout_marginStart="58dp"
         android:text="Afvis" />
 
     <TextView
