@@ -34,8 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this,"You are now registeret",Toast.LENGTH_SHORT).show();
                 String type = "register";
                 DatabaseController dbController = new DatabaseController(RegisterActivity.this);
-                dbController.execute(type,editUsername.getText().toString(),editPassword.getText().toString());
-
+                dbController.execute(type,editPassword.getText().toString());
+                //Insert successful: Student_id = '$student_id'
             /*  SharedPreferences preferences = getSharedPreferences("prefs",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("username",editUsername.getText().toString());

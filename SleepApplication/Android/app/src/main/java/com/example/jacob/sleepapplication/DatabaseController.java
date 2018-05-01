@@ -66,8 +66,7 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
 
         } else if(type.equals("register")) {
             try {
-                String student_id = params[1];
-                String student_pass = params[2];
+                String student_pass = params[1];
                 URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -76,7 +75,6 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data =
-                                        URLEncoder.encode("student_id","UTF-8")+ "="+URLEncoder.encode(student_id,"UTF-8")+"&"+
                                         URLEncoder.encode("student_pass","UTF-8")+ "="+URLEncoder.encode(student_pass,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -111,13 +109,15 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
+        String registerRmString = "Insert successful: Student_id = ";
+        alertDialog.setMessage("Brugernavn: "+result.replace(registerRmString,""));
         alertDialog.show();
         if (result.equalsIgnoreCase("login success")) {
             Intent Intent = new Intent(context, MainActivity.class);
             context.startActivity(Intent);
         }
-        if (result.equalsIgnoreCase("Insert successful")) {
+        if (result.startsWith("Insert")) {
+
             Intent Intent = new Intent(context, LoginActivity.class);
             context.startActivity(Intent);
         }
