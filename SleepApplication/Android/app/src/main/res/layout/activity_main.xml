@@ -99,12 +99,12 @@
                     android:layout_width="83dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/profil" />
+                    android:src="@drawable/consent" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Profil"
+                    android:text="Samtykke"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
