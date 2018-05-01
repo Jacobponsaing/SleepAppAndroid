@@ -2,6 +2,7 @@ package com.example.jacob.sleepapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,13 +32,16 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(RegisterActivity.this,"You are now registeret",Toast.LENGTH_SHORT).show();
+                String type = "register";
+                DatabaseController dbController = new DatabaseController(RegisterActivity.this);
+                dbController.execute(type,editUsername.getText().toString(),editPassword.getText().toString());
 
-                SharedPreferences preferences = getSharedPreferences("prefs",MODE_PRIVATE);
+            /*  SharedPreferences preferences = getSharedPreferences("prefs",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("username",editUsername.getText().toString());
                 editor.putString("password",editPassword.getText().toString());
                 editor.apply();
-                //String username = editUsername.getText().toString();
+            */    //String username = editUsername.getText().toString();
                 //String password = editPassword.getText().toString();
 
                 //SharedPreferences.Editor editor = preferences.edit();
