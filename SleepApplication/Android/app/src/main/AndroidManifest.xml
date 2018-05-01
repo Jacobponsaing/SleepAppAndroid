@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".SleepActivity" />
-        <activity android:name=".ActivityTwo" />
+        <activity android:name=".Consent" />
         <activity android:name=".ActivityThree" />
         <activity android:name=".ActivityFour" />
         <activity android:name=".RegisterActivity" />

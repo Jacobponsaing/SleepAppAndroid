@@ -36,12 +36,12 @@ public class RegisterActivity extends AppCompatActivity {
                 DatabaseController dbController = new DatabaseController(RegisterActivity.this);
                 dbController.execute(type,editPassword.getText().toString());
                 //Insert successful: Student_id = '$student_id'
-            /*  SharedPreferences preferences = getSharedPreferences("prefs",MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences("prefs",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("username",editUsername.getText().toString());
                 editor.putString("password",editPassword.getText().toString());
                 editor.apply();
-            */    //String username = editUsername.getText().toString();
+                //String username = editUsername.getText().toString();
                 //String password = editPassword.getText().toString();
 
                 //SharedPreferences.Editor editor = preferences.edit();

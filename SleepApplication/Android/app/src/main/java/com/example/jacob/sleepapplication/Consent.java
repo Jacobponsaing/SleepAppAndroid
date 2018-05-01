@@ -5,6 +5,12 @@ import android.os.Bundle;
 
 public class Consent extends AppCompatActivity {
 
+    private MainActivity mainActivity;
+
+    public void SetMain (MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
