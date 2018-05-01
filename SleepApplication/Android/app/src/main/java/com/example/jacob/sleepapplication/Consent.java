@@ -19,6 +19,9 @@ public class Consent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consent);
 
+
+
+
         Button btnreject = (Button) findViewById(R.id.btnreject);
         btnreject.setOnClickListener(new View.OnClickListener(){
             @Override

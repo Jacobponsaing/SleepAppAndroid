@@ -134,9 +134,9 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
 
-        } else if(type.equals("concent")) {
+        } else if(type.equals("consent")) {
             try {
-                String student_concent = params[1];
+                String student_consent = params[1];
                 URL url = new URL(timer_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -146,7 +146,7 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data =
                         URLEncoder.encode("student_id","UTF-8")+ "="+URLEncoder.encode(StudentModel.student_id,"UTF-8")+"&"+
-                                URLEncoder.encode("student_concent","UTF-8")+ "="+URLEncoder.encode(student_concent,"UTF-8");
+                                URLEncoder.encode("student_consent","UTF-8")+ "="+URLEncoder.encode(student_consent,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
