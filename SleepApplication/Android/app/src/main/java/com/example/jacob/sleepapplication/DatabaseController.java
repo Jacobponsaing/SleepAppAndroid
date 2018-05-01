@@ -109,8 +109,8 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        String registerRmString = "Insert successful: Student_id = ";
-        alertDialog.setMessage("Brugernavn: "+result.replace(registerRmString,""));
+        String registerSubString = "Insert successful: Student_id = ";
+        alertDialog.setMessage("Brugernavn: "+result.replace(registerSubString,""));
         alertDialog.show();
         if (result.equalsIgnoreCase("login success")) {
             Intent Intent = new Intent(context, MainActivity.class);
