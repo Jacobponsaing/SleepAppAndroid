@@ -187,7 +187,7 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
             Intent Intent = new Intent(context, MainActivity.class);
             context.startActivity(Intent);
         }
-        if (result.startsWith("Insert")) {
+        if (result.startsWith("Insert successful: Student_id")) {
             alertDialog.setMessage("Brugernavn: "+result.replace(registerSubString,""));
             Intent Intent = new Intent(context, LoginActivity.class);
             context.startActivity(Intent);
