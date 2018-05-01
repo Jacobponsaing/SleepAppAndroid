@@ -32,8 +32,8 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
         String register_url = "http://212.10.146.182:8080/register.php";
         if(type.equals("login")) {
             try {
-                String user_name = params[1];
-                String user_pass = params[2];
+                String student_id = params[1];
+                String student_pass = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -41,8 +41,8 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(user_pass,"UTF-8");
+                String post_data = URLEncoder.encode("student_id","UTF-8")+"="+URLEncoder.encode(student_id,"UTF-8")+"&"
+                        +URLEncoder.encode("student_pass","UTF-8")+"="+URLEncoder.encode(student_pass,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -66,15 +66,8 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
 
         } else if(type.equals("register")) {
             try {
-                String user_id = params[1];
-                String user_name = params[2];
-                String user_pass = params[3];
-                String school_type = params[4];
-                String gender = params[5];
-                String birth_year = params[6];
-                String height = params[7];
-                String weight = params[8];
-                String sleep_disorder = params[9];
+                String student_id = params[1];
+                String student_pass = params[2];
                 URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -83,15 +76,8 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data =
-                                        URLEncoder.encode("user_id","UTF-8")+ "="+URLEncoder.encode(user_id,"UTF-8")+"&"+
-                                        URLEncoder.encode("user_name","UTF-8")+ "="+URLEncoder.encode(user_name,"UTF-8")+"&"+
-                                        URLEncoder.encode("user_pass","UTF-8")+ "="+URLEncoder.encode(user_pass,"UTF-8")+"&"+
-                                        URLEncoder.encode("school_type","UTF-8")+ "="+URLEncoder.encode(school_type,"UTF-8")+"&"+
-                                        URLEncoder.encode("gender","UTF-8")+ "="+URLEncoder.encode(gender,"UTF-8")+"&"+
-                                        URLEncoder.encode("birth_year","UTF-8")+ "="+URLEncoder.encode(birth_year,"UTF-8")+"&"+
-                                        URLEncoder.encode("height","UTF-8")+ "="+URLEncoder.encode(height,"UTF-8")+"&"+
-                                        URLEncoder.encode("weight","UTF-8")+ "="+URLEncoder.encode(weight,"UTF-8")+"&"+
-                                        URLEncoder.encode("sleep_disorder","UTF-8")+ "="+URLEncoder.encode(sleep_disorder,"UTF-8");
+                                        URLEncoder.encode("student_id","UTF-8")+ "="+URLEncoder.encode(student_id,"UTF-8")+"&"+
+                                        URLEncoder.encode("student_pass","UTF-8")+ "="+URLEncoder.encode(student_pass,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

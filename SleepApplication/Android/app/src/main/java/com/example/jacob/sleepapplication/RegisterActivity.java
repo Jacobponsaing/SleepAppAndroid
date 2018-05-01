@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                 TODO: Add database functionality
                 String type = "register";
                 DatabaseController databaseController = new DatabaseController(RegisterActivity.this);
-                databaseController.execute(type, user_id, user_name, user_pass, school_type, gender, birth_year, height, weight, sleep_disorder ); // NEEDS TO LIKE: mUserName.getText().toString()
+                databaseController.execute(type, user_id, user_pass); // NEEDS TO LIKE: mUserName.getText().toString()
                  */
 
 
