@@ -117,7 +117,7 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
             context.startActivity(Intent);
         }
         if (result.startsWith("Insert")) {
-
+            alertDialog.setMessage("Brugernavn: "+result.replace(registerSubString,""))
             Intent Intent = new Intent(context, LoginActivity.class);
             context.startActivity(Intent);
         }

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else if(finalI == 1){//opens activity two
-                        Intent intent = new Intent(MainActivity.this,ActivityTwo.class);
+                        Intent intent = new Intent(MainActivity.this,Consent.class);
                         startActivity(intent);
 
                     }
