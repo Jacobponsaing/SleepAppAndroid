@@ -51,14 +51,6 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);
 
-                /*
-                TODO: Add database functionality
-                String type = "register";
-                DatabaseController databaseController = new DatabaseController(RegisterActivity.this);
-                databaseController.execute(type, user_id, user_pass); // NEEDS TO LIKE: mUserName.getText().toString()
-                 */
-
-
             }
         });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
