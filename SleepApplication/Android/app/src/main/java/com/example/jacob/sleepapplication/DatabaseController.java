@@ -23,6 +23,7 @@ public class DatabaseController extends AsyncTask<String, Void, String> {
     public AsyncResponse delegate = null;
     Context context;
     private AlertDialog alertDialog;
+    private String type;
 
     DatabaseController(Context ctx, AsyncResponse delegate) {
         context = ctx;
@@ -35,7 +36,7 @@ public class DatabaseController extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String type = params[0];
+        this.type = params[0];
         String login_url = "http://212.10.146.182:8080/login.php";
         String register_url = "http://212.10.146.182:8080/register.php";
         String timer_url = "http://212.10.146.182:8080/timer.php";
@@ -217,18 +218,25 @@ public class DatabaseController extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login Status");
+
     }
 
     @Override
     protected void onPostExecute(String result) {
+        if (type.equalsIgnoreCase("login") ||
+                type.equalsIgnoreCase("register") ||
+                type.equalsIgnoreCase("consent") ||
+                type.equalsIgnoreCase("timer")) {
+            alertDialog = new AlertDialog.Builder(context).create();
+            alertDialog.setTitle("Login Status");
+            alertDialog.setMessage(result);
+            alertDialog.show();
+        }
         if (delegate != null) {
             delegate.processFinish(result);
         }
         String registerSubString = "Insert successful: Student_id = ";
-        alertDialog.setMessage(result);
-        alertDialog.show();
+
         if (result.equalsIgnoreCase("login success")) {
             Intent Intent = new Intent(context, MainActivity.class);
             context.startActivity(Intent);
