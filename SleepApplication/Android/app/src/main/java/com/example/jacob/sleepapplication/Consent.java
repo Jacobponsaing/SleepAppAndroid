@@ -10,9 +10,7 @@ import android.widget.Toast;
 public class Consent extends AppCompatActivity {
 
     private MainActivity mainActivity;
-
     private String consent;
-
     public void SetMain(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
@@ -21,7 +19,6 @@ public class Consent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consent);
-
         final Button btnAccept = (Button) findViewById(R.id.btnaccept);
         final Button btnReject = (Button) findViewById(R.id.btnreject);
 
