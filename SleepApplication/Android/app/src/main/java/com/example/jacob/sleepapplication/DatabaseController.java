@@ -21,6 +21,7 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
 
     Context context;
     AlertDialog alertDialog;
+    String result;
     DatabaseController (Context ctx) {
         context = ctx;
     }
