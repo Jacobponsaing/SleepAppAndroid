@@ -237,8 +237,6 @@ public class DatabaseController extends AsyncTask<String, Void, String> {
             delegate.processFinish(result);
         }
         String registerSubString = "Insert successful: Student_id = ";
-        alertDialog.setMessage(result);
-        alertDialog.show();
         if (result.equalsIgnoreCase("login success")) {
             alertDialog.show();
             Intent Intent = new Intent(context, MainActivity.class);

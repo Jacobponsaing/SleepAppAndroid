@@ -12,7 +12,6 @@ public class AssessmentController extends AppCompatActivity implements DatabaseC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("HERE");
     }
 
     public AssessmentController () {
