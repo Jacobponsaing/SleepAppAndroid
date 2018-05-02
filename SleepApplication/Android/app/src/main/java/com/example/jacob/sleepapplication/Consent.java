@@ -23,7 +23,6 @@ public class Consent extends AppCompatActivity {
         setContentView(R.layout.consent);
 
         final Button btnAccept = (Button) findViewById(R.id.btnaccept);
-
         final Button btnReject = (Button) findViewById(R.id.btnreject);
 
         btnReject.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +36,6 @@ public class Consent extends AppCompatActivity {
                 Consent.this.startActivity(intent);
             }
         });
-
-
 
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
