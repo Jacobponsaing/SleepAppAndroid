@@ -22,7 +22,7 @@ public class Consent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consent);
 
-        final Button btnAccept = (Button) findViewById(R.id.bRegister);
+        final Button btnAccept = (Button) findViewById(R.id.btnaccept);
 
         final Button btnReject = (Button) findViewById(R.id.btnreject);
 
@@ -33,14 +33,14 @@ public class Consent extends AppCompatActivity {
                 String type = "consent";
                 DatabaseController dbController = new DatabaseController(Consent.this);
                 dbController.execute(type, consent);
-                /*Intent intent = new Intent(Consent.this, MainActivity.class);
+                Intent intent = new Intent(Consent.this, MainActivity.class);
                 Consent.this.startActivity(intent);
-            */}
+            }
         });
 
 
 
-/*        btnAccept.setOnClickListener(new View.OnClickListener() {
+        btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 consent = "1";
@@ -50,7 +50,7 @@ public class Consent extends AppCompatActivity {
                 Intent intent = new Intent(Consent.this, MainActivity.class);
                 Consent.this.startActivity(intent);
             }
-        });*/
+        });
 
     }
 }

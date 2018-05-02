@@ -2,6 +2,7 @@ package com.example.jacob.sleepapplication;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 
@@ -170,43 +171,9 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (type.equals("login")) {
-                try {
-                    String student_id = params[1];
-                    String student_pass = params[2];
-                    URL url = new URL(login_url);
-                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                    httpURLConnection.setRequestMethod("POST");
-                    httpURLConnection.setDoOutput(true);
-                    httpURLConnection.setDoInput(true);
-                    OutputStream outputStream = httpURLConnection.getOutputStream();
-                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                    String post_data = URLEncoder.encode("student_id", "UTF-8") + "=" + URLEncoder.encode(student_id, "UTF-8") + "&"
-                            + URLEncoder.encode("student_pass", "UTF-8") + "=" + URLEncoder.encode(student_pass, "UTF-8");
-                    bufferedWriter.write(post_data);
-                    bufferedWriter.flush();
-                    bufferedWriter.close();
-                    outputStream.close();
-                    InputStream inputStream = httpURLConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                    String result = "";
-                    String line = "";
-                    while ((line = bufferedReader.readLine()) != null) {
-                        result += line;
-                    }
-                    bufferedReader.close();
-                    inputStream.close();
-                    httpURLConnection.disconnect();
-                    StudentModel.student_id = student_id;
-                    return result;
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-            } else if (type.equals("assessment")) {
-                try {
+        } else if (type.equals("assessment")) {
+            try {
                     String student_id = params[1];
                     URL url = new URL(assessment_url);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -235,7 +202,6 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
 
             }
         }
@@ -250,17 +216,27 @@ public class DatabaseController extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
+
         String registerSubString = "Insert successful: Student_id = ";
         alertDialog.setMessage(result);
-        alertDialog.show();
+
         if (result.equalsIgnoreCase("login success")) {
+            alertDialog.show();
             Intent Intent = new Intent(context, MainActivity.class);
             context.startActivity(Intent);
         }
+
         if (result.startsWith("Insert successful: Student_id")) {
-            alertDialog.setMessage("Brugernavn: "+result.replace(registerSubString,""));
-            Intent Intent = new Intent(context, LoginActivity.class);
-            context.startActivity(Intent);
+            new AlertDialog.Builder(context)
+                    .setMessage("Brugernavn: " + result.replace(registerSubString, ""))
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent Intent = new Intent(context, LoginActivity.class);
+                            context.startActivity(Intent);
+                        }
+                    })
+                    .show();
         }
     }
 

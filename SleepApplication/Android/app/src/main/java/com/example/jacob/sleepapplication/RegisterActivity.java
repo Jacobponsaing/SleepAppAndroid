@@ -48,9 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
                 //editor.putString(username,password);
                 //editor.commit();
 
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                startActivity(intent);
-
             }
         });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
