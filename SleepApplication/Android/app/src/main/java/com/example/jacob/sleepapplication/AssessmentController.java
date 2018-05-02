@@ -1,5 +1,6 @@
 package com.example.jacob.sleepapplication;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 public class AssessmentController extends AppCompatActivity implements DatabaseController.AsyncResponse {
@@ -8,10 +9,15 @@ public class AssessmentController extends AppCompatActivity implements DatabaseC
     private String resultSet;
     private String type = "assessment";
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        System.out.println("HERE");
+    }
+
     public AssessmentController () {
         DatabaseController dbController = new DatabaseController(AssessmentController.this,this);
         dbController.execute(type,this.student_id);
-
     }
 
     public String getResultSet() {
